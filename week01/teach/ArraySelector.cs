@@ -9,8 +9,28 @@ public static class ArraySelector
         Console.WriteLine("<int[]>{" + string.Join(", ", intResult) + "}"); // <int[]>{1, 2, 3, 2, 4, 4, 6, 8, 10, 5}
     }
 
-    private static int[] ListSelector(int[] list1, int[] list2, int[] select)
+private static int[] ListSelector(int[] list1, int[] list2, int[] select)
+{
+    int[] result = new int[select.Length];
+    int i = 0, j = 0;
+
+    for (int k = 0; k < select.Length; k++)
     {
-        return [];
+        if (select[k] == 1)
+        {
+            result[k] = list1[i++];
+        }
+        else if (select[k] == 2)
+        {
+            result[k] = list2[j++];
+        }
+        else
+        {
+            throw new ArgumentException("Selector array must only contain 1s and 2s.");
+        }
     }
+
+    return result;
+}
+
 }
